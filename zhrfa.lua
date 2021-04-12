@@ -1689,7 +1689,7 @@ local Text_Zhrfa = "1- `"..Zhrf..EmojeS[math.random(#EmojeS)]
 .."`\n\n8- `"..Zhrf8..Emoje[math.random(#Emoje)]
 .."`\n\n9- `"..Zhrf9..Emoje[math.random(#Emoje)]
 .."`\n\n10- `"..Zhrf5..Emoje[math.random(#Emoje)]
-Text_Zhrfa = Text_Zhrfa.."`\n\n| Channel : @JJJSE  \n★"
+Text_Zhrfa = Text_Zhrfa.."`\n\n *Channel : @JJJSE*  \n"
 sendMsg(msg.chat_id_,msg.id_,Text_Zhrfa)
 return false
 end
