@@ -1260,7 +1260,7 @@ redis:del(js.."SET:GAME" .. msg.chat_id_ .. "" .. msg.sender_user_id_)
 sendMsg(msg.chat_id_,msg.id_,'\n*✶ للاسف لقد خسرت \n✶ المحيبس بل ايد رقم { '..GETNUM..' }\n✶ حاول مره اخرى للعثور على المحيبس *')   
 end
 end
-end
+end --f55s5
 if (msg.text == redis:get(js.."GAME:CHER"..msg.chat_id_)) and redis:get(js.."GAME:S"..msg.chat_id_) then  
 sendMsg(msg.chat_id_,msg.id_,'*✶ اجابتك صحيحه ذكي وربي .*')     
 redis:incrby(js..':User_Points:'..msg.chat_id_..msg.sender_user_id_,1)  
