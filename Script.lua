@@ -353,8 +353,27 @@ SUDO_USER = redis:hgetall(js..'username:'..SUDO_ID).username
 sendPhoto(msg.chat_id_,msg.id_,redis:get(js..':WELCOME_BOT'),[[*مرحبـاً أنا جيسي 🍬*
 
 - اختصاصي ادارة المجموعات من السبام والخ..
-- لتفعيلي ارفعني مشرف وارسل تفعيل.]])
+- لتفعيلي ارفعني مشرف وارسل تفعيل.]]
+GetUserID(msg.sender_user_id_,function(arg,data)
+if data.last_name_ then Name = data.first_name_ .." "..data.last_name_ else Name = data.first_name_ end
+text = redis:get(js..':Text_Start') or text
+local edited = (redis:get(js..':edited:'..msg.chat_id_..':'..msg.sender_user_id_) or 0)
+local points = redis:get(js..':User_Points:'..msg.chat_id_..msg.sender_user_id_) or 0
+local Emsgs = redis:get(js..'msgs:'..msg.sender_user_id_..':'..msg.chat_id_) or 1
+if data.username_ then UserNameID = "@"..data.username_ else UserNameID = "لا يوجد" end  
+text = text:gsub("#name",Name)
+text = text:gsub("#id",msg.sender_user_id_)
+text = text:gsub("#msgs",UserNameID)
+text = text:gsub("#stast",msg.TheRank)
+text = text:gsub("#bot",redis:get(js..':NameBot:'))
+text = text:gsub("{المطور}",SUDO_USER)
+xsudouser = SUDO_USER:gsub('@','')
+xsudouser = xsudouser:gsub([[\_]],'_')
+local inline = {{{text="أضِفني لِـ مجموعتك 🍬",url="https://telegram.me/SsHvBot?startgroup=start"}},{{text="مُميزات جِيسي ✨",url="t.me/JJJSE"}}}
+send_key(msg.sender_user_id_,text,nil,inline,msg.id_)
+end,nil)
 return false
+end
 end
 if not ISONEBOT then
 msg.adduser = msg.content_.members_[0].id_
