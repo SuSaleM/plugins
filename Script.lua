@@ -353,10 +353,7 @@ SUDO_USER = redis:hgetall(js..'username:'..SUDO_ID).username
 sendPhoto(msg.chat_id_,msg.id_,redis:get(js..':WELCOME_BOT'),[[*مرحبـاً أنا جيسي 🍬*
 
 - اختصاصي ادارة المجموعات من السبام والخ..
-- لتفعيلي ارفعني مشرف وارسل تفعيل.]]
-local inline = {{text="مُميزات جِيسي ✨",url="t.me/JJJSE"}}}
-send_key(msg.sender_user_id_,text,nil,inline,msg.id_)
-end,nil)
+- لتفعيلي ارفعني مشرف وارسل تفعيل.]])
 return false
 end
 if not ISONEBOT then
